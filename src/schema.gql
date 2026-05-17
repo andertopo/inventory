@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductType {
+  """Products id"""
+  _id: ID!
+
+  """Products name"""
+  name: String!
+
+  """Products price"""
+  price: Float!
+
+  """Products description"""
+  description: String!
+}
+
+type Query {
+  products: [ProductType!]!
+  productById(id: String!): ProductType!
+}
+
+type Mutation {
+  createProduct(product: CreateProductInput!): ProductType!
+  updateProduct(product: UpdateProductInput!): ProductType!
+  removeProduct(id: String!): Boolean!
+}
+
+input CreateProductInput {
+  """Products name"""
+  name: String! = ""
+
+  """Products price"""
+  price: Float! = 0
+
+  """Products description"""
+  description: String! = ""
+}
+
+input UpdateProductInput {
+  """products id"""
+  _id: String! = ""
+
+  """Products name"""
+  name: String! = ""
+
+  """Products price"""
+  price: Float! = 0
+
+  """Products description"""
+  description: String! = ""
+}
+
+type Subscription {
+  productAdded: ProductType!
+}
