@@ -1,3 +1,3 @@
-export default class ProductById {
-  id: number;
+export interface ProductById {
+  id: string;
 }

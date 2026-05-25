@@ -22,5 +22,11 @@ async function bootstrap() {
   app.startAllMicroservices();
 
   await app.listen(process.env.PORT ?? 3000);
+
+  // const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  //   AppModule,
+  //   grpcClientOptions
+  // );
+  // await app.listen();
 }
 bootstrap();

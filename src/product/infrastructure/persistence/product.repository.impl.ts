@@ -30,7 +30,14 @@ export class ProductRepositoryImpl implements ProductRepository {
     }
 
     async updateProduct(id: string, product: Partial<Product>): Promise<Product> {
-        const productChanged = await this.productModel.findByIdAndUpdate(id, product, { upsert: true, new: true }).exec();
+        const productChanged = await this.productModel.findByIdAndUpdate(
+            id,
+            product,
+            { 
+                upsert: true,
+                new: true,
+                omitUndefined: true
+            }).exec();
         return ProductMapper.toDomain(productChanged);
     }
 

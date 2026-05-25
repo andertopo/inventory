@@ -10,12 +10,13 @@ import { RemoveProductUseCase } from './application/uses-cases/remove-product/re
 import { ListProductsUseCase } from './application/uses-cases/list-products/list-products.use-case';
 import { GetProductByIdUseCase } from './application/uses-cases/get-product/get-product-by-id.use-case';
 import { PubSub } from 'graphql-subscriptions';
+import { ProductGrpcController } from './infrastructure/grpc/product.grpc.controller';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: ProductDocument.name, schema: ProductSchema, collection: 'products' }])
   ],
-  controllers: [ProductController],
+  controllers: [ProductController, ProductGrpcController],
   providers: [
     ProductResolver,
     CreateProductUseCase,

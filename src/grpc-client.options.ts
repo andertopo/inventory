@@ -7,8 +7,7 @@ export const grpcClientOptions: GrpcOptions = {
   options: {
     package: 'product',
     protoPath: join(__dirname, './product/infrastructure/grpc/product.proto'),
-    onLoadPackageDefinition: (pkg, server) => {
-      new ReflectionService(pkg).addToServer(server);
-    },
+    url: '0.0.0.0:50052',
+    onLoadPackageDefinition: (pkg, server) => new ReflectionService(pkg).addToServer(server),
   },
 };

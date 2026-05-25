@@ -1,20 +1,35 @@
 
-// product/product.proto
 syntax = "proto3";
 
 package product;
 
 service ProductService {
   rpc FindOne (ProductById) returns (Product) {}
+  rpc List (EmptyRequest) returns (ProductList) {}
+  rpc Update (Product) returns (Product) {}
+  rpc Create (CreateProduct) returns (Product) {}
+  rpc Remove (ProductById) returns (EmptyRequest) {}
 }
 
+message EmptyRequest {}
+
 message ProductById {
-  int32 id = 1;
+  string id = 1;
 }
 
 message Product {
-  int32 id = 1;
+  string _id = 1;
   string name = 2;
   string description = 3;
-  string price = 4;
+  int32 price = 4;
+}
+
+message ProductList {
+  repeated Product products = 1;
+}
+
+message CreateProduct {
+  string name = 1;
+  string description = 2;
+  int32 price = 3;
 }
